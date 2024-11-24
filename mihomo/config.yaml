@@ -1,0 +1,43 @@
+#---------------------------------------------------#
+## 配置文件需要放置在 $HOME/.config/clash.meta/*.yaml
+
+## 这份文件是clashX的基础配置文件，请尽量新建配置文件进行修改。
+
+## 如果您不知道如何操作，请参阅
+## Clash Meta wiki  https://wiki.metacubex.one/
+## Clash Meta wiki  https://clash-meta.wiki
+## Clash Meta Github文档  https://github.com/MetaCubeX/Clash.Meta/blob/Alpha/README.md
+
+#---------------------------------------------------#
+
+log-level: debug
+
+# (HTTP and SOCKS5 in one port)
+mixed-port : 7890
+# RESTful API for clash
+external-controller: 127.0.0.1:9090
+mode: rule
+
+proxies:
+  - name: cfworker
+    type: vless
+    server: kttw.invfish.top
+    port: 443
+    uuid: 52635994-8f6b-4a3e-a7f5-3746ce588871
+    udp: false
+    tls: true
+    network: ws
+    servername: kttw.invfish.top # priority over wss host
+    # skip-cert-verify: true
+    ws-opts:
+      path: "/?ed=2048"
+      headers:
+        Host: kttw.invfish.top
+      # v2ray-http-upgrade: false
+
+rules:
+  - DOMAIN-SUFFIX,lagrangecore.org,cfworker
+
+  # OTHERS, DIRECT
+#  - GEOIP, CN, DIRECT
+  - MATCH, DIRECT
