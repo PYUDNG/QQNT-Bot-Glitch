@@ -1,3 +1,2 @@
-mihomo/mihomo -f /app/mihomo/config.yaml > ./mihomo/mihomo-stdout-stderr.lof 2>&1 & 
-sleep 5
+chmod +x ./Lagrange.OneBot
 ./Lagrange.OneBot
